@@ -6,6 +6,8 @@ import (
 	"strconv"
 	"time"
 
+	RouterFactory "rest-api-server/router"
+
 	
 )
 
@@ -31,9 +33,11 @@ func NewServer(port int) *Server {
 	server.Port = port
 	server.Addr = ":" + strconv.Itoa(port)
 
+	router := RouterFactory.NewRouter()
+
 	server.HTTPServer = &http.Server{
 		Addr:           server.Addr,
-		Handler:        nil,
+		Handler:        router.Router,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
