@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"encoding/json"
 )
-
-type SensorReading struct {
+//SensorReading ...
+type SensorReading struct { 
 	Name 		string 	`json:"name"`
 	Capacity 	int 	`json:"capacity"`
 	Time 		string	`json:"time"`
 	Information Info 	`json:"info"`
 }
 
+// Info ...
 type Info struct {
 	Description string `json:"desc"`
 }
